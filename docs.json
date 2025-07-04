@@ -1,11 +1,11 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "VentraIP Support Centre",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#b52578",
+    "light": "#b52578",
+    "dark": "#b52578"
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -82,14 +82,14 @@
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "Homepage",
+        "href": "https://ventraip.com.au/"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "VIPcontrol",
+      "href": "https://vip.ventraip.com.au/"
     }
   },
   "footer": {
