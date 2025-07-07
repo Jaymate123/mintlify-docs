@@ -1,82 +1,70 @@
 {
-  "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "VentraIP Support Centre",
-  "colors": {
-    "primary": "#b52578",
-    "light": "#b52578",
-    "dark": "#b52578"
-  },
-  "favicon": "/favicon.svg",
-  "navigation": {
-    "tabs": [
-      {
-        "tab": "Guides",
+    "$schema": "https://mintlify.com/docs.json",
+    "theme": "mint",
+    "name": "VentraIP Support Centre",
+    "colors": {
+        "primary": "#b52578",
+        "light": "#b52578",
+        "dark": "#b52578"
+    },
+    "favicon": "/favicon.svg",
+    "navigation": {
         "groups": [
-          {
-            "group": "Get Started",
-            "pages": [
-              "index",
-              "quickstart",
-              "development"
+            {
+                "group": "Support Centre",
+                "pages": [
+                    "index"
+                ]
+            },
+            {
+                "group": "Domain Names",
+                "pages": [
+                    "essentials/markdown"
+                ]
+            }
+        ],
+        "global": {
+            "anchors": [
+                {
+                    "anchor": "Status",
+                    "href": "https://status.ventraip.com.au",
+                    "icon": "bell"
+                },
+                {
+                    "anchor": "Recovery",
+                    "href": "https://ventraip.com.au/recovery",
+                    "icon": "toolbox"
+                },
+                {
+                    "anchor": "Contact us",
+                    "href": "https://ventraip.com.au/contact-us/",
+                    "icon": "phone"
+                }
             ]
-          },
-          {
-            "group": "Essentials",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
-            ]
-          }
-        ]
-      }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Status",
-          "href": "https://status.ventraip.com.au",
-          "icon": "bell"
-        },
-        {
-          "anchor": "Recovery",
-          "href": "https://ventraip.com.au/recovery",
-          "icon": "toolbox"
-        },
-        {
-          "anchor": "Contact us",
-          "href": "https://ventraip.com.au/contact-us/",
-          "icon": "phone"
         }
-      ]
+    },
+    "logo": {
+        "light": "/logo/light.svg",
+        "dark": "/logo/dark.svg"
+    },
+    "navbar": {
+        "links": [
+            {
+                "label": "Homepage",
+                "href": "https://ventraip.com.au/"
+            }
+        ],
+        "primary": {
+            "type": "button",
+            "label": "VIPcontrol",
+            "href": "https://vip.ventraip.com.au/"
+        }
+    },
+    "footer": {
+        "socials": {
+            "x": "https://x.com/ventraip",
+            "facebook": "https://www.facebook.com/ventraip/",
+            "instagram": "https://www.instagram.com/ventraip/"
+        }
     }
-  },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
-  },
-  "navbar": {
-    "links": [
-      {
-        "label": "Homepage",
-        "href": "https://ventraip.com.au/"
-      }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "VIPcontrol",
-      "href": "https://vip.ventraip.com.au/"
-    }
-  },
-  "footer": {
-    "socials": {
-      "x": "https://x.com/ventraip",
-      "facebook": "https://www.facebook.com/ventraip/",
-      "instagram": "https://www.instagram.com/ventraip/"
-    }
-  }
 }
