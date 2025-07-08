@@ -19,9 +19,25 @@
             {
                 "group": "Domain Names",
                 "pages": [
-                    "essentials/markdown"
+                    "what-happens-if-i-have-a-cancelled-abn-on-my-domain"
                 ]
             }
+            {
+                "group": "Web Hosting",
+            }    
+            {
+                "group": "Email Hosting",
+                "pages": [
+                    "troubleshooting-email-apps",
+                  {
+                    "group": "Email App Setup",
+                    "pages": [
+                      "adding-email-accounts-to-popular-mail-apps",
+                      "outlook-windows-setup"
+                    ]
+                  }
+                ]
+            }  
         ],
         "global": {
             "anchors": [
