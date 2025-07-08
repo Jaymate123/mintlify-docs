@@ -11,16 +11,17 @@
     "navigation": {
         "groups": [
             {
-                "group": "Support Centre",
-                "pages": [
-                    "index"
-                ]
-            },
-            {
                 "group": "Domain Names",
                 "icon": "tag",
                 "pages": [
-                    "what-happens-if-i-have-a-cancelled-abn-on-my-domain"
+                    "what-is-a-domain-name",
+                  {
+                    "group": ".au Policy",
+                    "icon": "earth-oceania",
+                    "pages": [
+                      "what-happens-if-i-have-a-cancelled-abn-on-my-domain"
+                    ]
+                  }
                 ]
             },
             {
