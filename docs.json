@@ -21,14 +21,16 @@
                 "pages": [
                     "what-happens-if-i-have-a-cancelled-abn-on-my-domain"
                 ]
-            }
+            },
             {
                 "group": "Web Hosting",
-            }    
+                "pages": []
+            },    
             {
                 "group": "Email Hosting",
                 "pages": [
                     "troubleshooting-email-apps",
+                
                   {
                     "group": "Email App Setup",
                     "pages": [
