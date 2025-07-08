@@ -18,23 +18,28 @@
             },
             {
                 "group": "Domain Names",
+                "icon": "tag",
                 "pages": [
                     "what-happens-if-i-have-a-cancelled-abn-on-my-domain"
                 ]
             },
             {
                 "group": "Web Hosting",
-                "pages": []
+                "icon": "globe",
+                "pages": [
+                  "example"
+                ]
             },    
             {
                 "group": "Email Hosting",
+                "icon": "envelope",
                 "pages": [
                     "troubleshooting-email-apps",
                 
                   {
                     "group": "Email App Setup",
                     "pages": [
-                      "adding-email-accounts-to-popular-mail-apps",
+                      "adding-email-accounts-to-mail-apps",
                       "outlook-windows-setup"
                     ]
                   }
