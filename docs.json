@@ -3,11 +3,27 @@
     "theme": "mint",
     "name": "VentraIP Support Centre",
     "colors": {
-        "primary": "#b52578",
-        "light": "#b52578",
-        "dark": "#b52578"
+      "primary": "#f032a4",
+      "light": "#f565b8",
+      "dark": "#d12c94"
     },
     "favicon": "/favicon.svg",
+    "logo": {
+        "light": "/logo/light.svg",
+        "dark": "/logo/dark.svg"
+    },
+    "favicon": "/favicon.svg",
+    "metadata": {
+    "og:title": "VentraIP Support Centre",
+    "og:description": "Expert guidance for web hosting, domains, email, and digital services",
+    "og:site_name": "VentraIP Support",
+    "twitter:card": "summary_large_image",
+    "twitter:title": "VentraIP Support Centre",
+    "twitter:description": "Expert guidance for web hosting, domains, email, and digital services"
+  },
+  "background": {
+    "decoration": "grid"
+  },
     "navigation": {
         "groups": [
             {
@@ -66,10 +82,6 @@
                 }
             ]
         }
-    },
-    "logo": {
-        "light": "/logo/light.svg",
-        "dark": "/logo/dark.svg"
     },
     "navbar": {
         "links": [
