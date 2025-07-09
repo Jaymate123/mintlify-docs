@@ -1,217 +1,863 @@
 {
-  "openapi": "3.1.0",
+  "openapi": "3.0.3",
   "info": {
-    "title": "OpenAPI Plant Store",
-    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
-    "license": {
-      "name": "MIT"
-    },
-    "version": "1.0.0"
+    "title": "WholesaleSystem",
+    "description": "\n",
+    "version": "1.0.0",
+    "contact": {}
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
-    }
-  ],
-  "security": [
-    {
-      "bearerAuth": []
+      "url": "https://api.synergywholesale.com:443"
     }
   ],
   "paths": {
-    "/plants": {
-      "get": {
-        "description": "Returns all plants from the system that the user has access to",
+    "/server.php": {
+      "post": {
+        "summary": "hostingGetService",
+        "description": "Will retrieve the information associated with the hoid",
+        "operationId": "hostinggetservice",
         "parameters": [
           {
-            "name": "limit",
-            "in": "query",
-            "description": "The maximum number of results to return",
+            "name": "soapaction",
+            "in": "header",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string",
+              "example": "urn:WholesaleSystem#hostingGetService"
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/xml": {
+              "examples": {
+                "DNSSECAddDS": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <DNSSECAddDS>\n      <DNSSECAddDSRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <keyTag>100</keyTag>\n        <algorithm>100</algorithm>\n        <digestType>100</digestType>\n        <digest>F1d1d1d4496f4673A1EFA1cF36D9Ed36FAD1Ebf6bb95C2A7388BceBF4a87f9bCF3da87eAc555cDEAc7D64c8AE8e811</digest>\n      </DNSSECAddDSRequest>\n    </DNSSECAddDS>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "DNSSECListDS": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <DNSSECListDS>\n      <DNSSECListDSRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n      </DNSSECListDSRequest>\n    </DNSSECListDS>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "DNSSECRemoveDS": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <DNSSECRemoveDS>\n      <DNSSECRemoveDSRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <UUID>string</UUID>\n      </DNSSECRemoveDSRequest>\n    </DNSSECRemoveDS>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "SSL_cancelSSLCertificate": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_cancelSSLCertificate>\n      <SSL_cancelSSLCertificateRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <certID>string</certID>\n      </SSL_cancelSSLCertificateRequest>\n    </SSL_cancelSSLCertificate>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "SSL_checkDomainBeacon": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_checkDomainBeacon>\n      <SSL_checkDomainBeaconRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <certID>string</certID>\n        <domainName>string</domainName>\n      </SSL_checkDomainBeaconRequest>\n    </SSL_checkDomainBeacon>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "SSL_checkTxtCodes": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_checkTxtCodes>\n      <SSL_checkTxtCodesRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <certID>string</certID>\n      </SSL_checkTxtCodesRequest>\n    </SSL_checkTxtCodes>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "SSL_decodeCSR": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_decodeCSR>\n      <SSL_decodeCSRRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <csr>string</csr>\n      </SSL_decodeCSRRequest>\n    </SSL_decodeCSR>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "SSL_generateCSR": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_generateCSR>\n      <SSL_generateCSRRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <numOfYears>100</numOfYears>\n        <country>string</country>\n        <state>string</state>\n        <city>string</city>\n        <organisation>string</organisation>\n        <organisationUnit>string</organisationUnit>\n        <commonName>string</commonName>\n        <emailAddress>string</emailAddress>\n        <addressArray>\n          <@_SOAP-ENC:arrayType/>\n        </addressArray>\n        <privateKeyLength>100</privateKeyLength>\n      </SSL_generateCSRRequest>\n    </SSL_generateCSR>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "SSL_getCertSimpleStatus": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_getCertSimpleStatus>\n      <SSL_getCertSimpleStatusRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <certID>string</certID>\n      </SSL_getCertSimpleStatusRequest>\n    </SSL_getCertSimpleStatus>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "SSL_getCertStatus": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_getCertStatus>\n      <SSL_getCertStatusRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <certID>string</certID>\n      </SSL_getCertStatusRequest>\n    </SSL_getCertStatus>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "SSL_getDomainBeacon": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_getDomainBeacon>\n      <SSL_getDomainBeaconRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <certID>string</certID>\n        <domainName>string</domainName>\n      </SSL_getDomainBeaconRequest>\n    </SSL_getDomainBeacon>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "SSL_getSSLCertificate": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_getSSLCertificate>\n      <SSL_getSSLCertificateRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <certID>string</certID>\n      </SSL_getSSLCertificateRequest>\n    </SSL_getSSLCertificate>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "SSL_listAllCerts": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_listAllCerts>\n      <SSL_listAllCertsRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n      </SSL_listAllCertsRequest>\n    </SSL_listAllCerts>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "SSL_purchaseSSLCertificate": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_purchaseSSLCertificate>\n      <SSL_purchaseSSLCertificateRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <privateKey>string</privateKey>\n        <csr>string</csr>\n        <productID>string</productID>\n        <firstName>string</firstName>\n        <lastName>string</lastName>\n        <emailAddress>string</emailAddress>\n        <address>string</address>\n        <city>string</city>\n        <state>string</state>\n        <postCode>string</postCode>\n        <country>string</country>\n        <phone>string</phone>\n        <fax>string</fax>\n        <businessCategory>string</businessCategory>\n      </SSL_purchaseSSLCertificateRequest>\n    </SSL_purchaseSSLCertificate>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "SSL_reissueCertificate": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_reissueCertificate>\n      <SSL_reissueCertificateRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <certID>string</certID>\n        <newCSR>string</newCSR>\n      </SSL_reissueCertificateRequest>\n    </SSL_reissueCertificate>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "SSL_renewSSLCertificate": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_renewSSLCertificate>\n      <SSL_renewSSLCertificateRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <certID>string</certID>\n        <firstName>string</firstName>\n        <lastName>string</lastName>\n        <emailAddress>string</emailAddress>\n        <address>string</address>\n        <city>string</city>\n        <state>string</state>\n        <postCode>string</postCode>\n        <country>string</country>\n        <phone>string</phone>\n        <fax>string</fax>\n      </SSL_renewSSLCertificateRequest>\n    </SSL_renewSSLCertificate>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "SSL_resendDVEmail": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_resendDVEmail>\n      <SSL_resendDVEmailRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <certID>string</certID>\n      </SSL_resendDVEmailRequest>\n    </SSL_resendDVEmail>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "SSL_resendIssuedCertificateEmail": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_resendIssuedCertificateEmail>\n      <SSL_resendIssuedCertificateEmailRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <certID>string</certID>\n      </SSL_resendIssuedCertificateEmailRequest>\n    </SSL_resendIssuedCertificateEmail>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "addDNSRecord": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <addDNSRecord>\n      <addDNSRecordRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <recordName>string</recordName>\n        <recordType>string</recordType>\n        <recordContent>string</recordContent>\n        <recordTTL>100</recordTTL>\n        <recordPrio>100</recordPrio>\n      </addDNSRecordRequest>\n    </addDNSRecord>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "addDNSZone": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <addDNSZone>\n      <addDNSZoneRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <ipAddress>string</ipAddress>\n      </addDNSZoneRequest>\n    </addDNSZone>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "addEmailToSMSForwarder": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <addEmailToSMSForwarder>\n      <addEmailToSMSForwarderRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <sourceEmail>string</sourceEmail>\n        <senderID>string</senderID>\n      </addEmailToSMSForwarderRequest>\n    </addEmailToSMSForwarder>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "addHost": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <addHost>\n      <addHostRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <host>string</host>\n        <domainName>string</domainName>\n        <ipAddressRequest>\n          <@_SOAP-ENC:arrayType/>\n        </ipAddressRequest>\n      </addHostRequest>\n    </addHost>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "addHostIP": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <addHostIP>\n      <addHostIPRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <host>string</host>\n        <domainName>string</domainName>\n        <ipAddressRequest>\n          <@_SOAP-ENC:arrayType/>\n        </ipAddressRequest>\n      </addHostIPRequest>\n    </addHostIP>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "addMailForward": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <addMailForward>\n      <addMailForwardRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <source>string</source>\n        <destination>string</destination>\n      </addMailForwardRequest>\n    </addMailForward>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "addSimpleURLForward": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <addSimpleURLForward>\n      <addSimpleURLForwardRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <hostName>string</hostName>\n        <destination>string</destination>\n        <type>string</type>\n        <wildcardSource>true</wildcardSource>\n        <retainPath>true</retainPath>\n        <pageTitle>string</pageTitle>\n        <metaKeywords>string</metaKeywords>\n        <metaDescription>string</metaDescription>\n        <refreshSeconds>100</refreshSeconds>\n        <redirectMessage>string</redirectMessage>\n      </addSimpleURLForwardRequest>\n    </addSimpleURLForward>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "assignDomainCategory": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <assignDomainCategory>\n      <assignDomainCategoryRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <categoryId>string</categoryId>\n        <categoryName>string</categoryName>\n      </assignDomainCategoryRequest>\n    </assignDomainCategory>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "balanceQuery": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <balanceQuery>\n      <balanceQueryRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n      </balanceQueryRequest>\n    </balanceQuery>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "bulkCheckDomain": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <bulkCheckDomain>\n      <bulkCheckDomainRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainListRequest>\n          <@_SOAP-ENC:arrayType/>\n        </domainListRequest>\n        <years>100</years>\n        <command>string</command>\n      </bulkCheckDomainRequest>\n    </bulkCheckDomain>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "bulkDomainInfo": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <bulkDomainInfo>\n      <bulkDomainInfoRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainListRequest>\n          <@_SOAP-ENC:arrayType/>\n        </domainListRequest>\n      </bulkDomainInfoRequest>\n    </bulkDomainInfo>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "bulkHostingInfo": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <bulkHostingInfo>\n      <bulkHostingInfoRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <hoidListRequest>\n          <@_SOAP-ENC:arrayType/>\n        </hoidListRequest>\n      </bulkHostingInfoRequest>\n    </bulkHostingInfo>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "businessCheckRegistration": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <businessCheckRegistration>\n      <businessCheckRegistrationRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <registrationNumber>string</registrationNumber>\n        <registrationState>string</registrationState>\n      </businessCheckRegistrationRequest>\n    </businessCheckRegistration>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "canRenewDomain": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <canRenewDomain>\n      <canRenewDomainRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <associationID>string</associationID>\n      </canRenewDomainRequest>\n    </canRenewDomain>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "cancelRegistrantUpdate": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <cancelRegistrantUpdate>\n      <cancelRegistrantUpdateRequest>\n        <resellerID>100</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n      </cancelRegistrantUpdateRequest>\n    </cancelRegistrantUpdate>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "checkDomain": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <checkDomain>\n      <checkDomainRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <years>100</years>\n        <command>string</command>\n      </checkDomainRequest>\n    </checkDomain>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "checkDomainEPPCode": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <checkDomainEPPCode>\n      <checkDomainEPPCodeRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <authInfo>string</authInfo>\n      </checkDomainEPPCodeRequest>\n    </checkDomainEPPCode>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "createDomainCategory": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <createDomainCategory>\n      <createDomainCategoryRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <name>string</name>\n        <note>string</note>\n      </createDomainCategoryRequest>\n    </createDomainCategory>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "deleteDNSRecord": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <deleteDNSRecord>\n      <deleteDNSRecordRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <recordID>string</recordID>\n      </deleteDNSRecordRequest>\n    </deleteDNSRecord>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "deleteDNSZone": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <deleteDNSZone>\n      <deleteDNSZoneRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n      </deleteDNSZoneRequest>\n    </deleteDNSZone>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "deleteDomain": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <deleteDomain>\n      <deleteDomainRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <reason>string</reason>\n        <confirm>true</confirm>\n      </deleteDomainRequest>\n    </deleteDomain>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "deleteEmailToSMSForwarder": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <deleteEmailToSMSForwarder>\n      <deleteEmailToSMSForwarderRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <forwarderID>string</forwarderID>\n      </deleteEmailToSMSForwarderRequest>\n    </deleteEmailToSMSForwarder>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "deleteHost": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <deleteHost>\n      <deleteHostRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <host>string</host>\n        <domainName>string</domainName>\n      </deleteHostRequest>\n    </deleteHost>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "deleteHostIP": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <deleteHostIP>\n      <deleteHostIPRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <host>string</host>\n        <domainName>string</domainName>\n        <ipAddressRequest>\n          <@_SOAP-ENC:arrayType/>\n        </ipAddressRequest>\n      </deleteHostIPRequest>\n    </deleteHostIP>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "deleteMailForward": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <deleteMailForward>\n      <deleteMailForwardRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <forwardID>100</forwardID>\n      </deleteMailForwardRequest>\n    </deleteMailForward>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "deleteSimpleURLForward": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <deleteSimpleURLForward>\n      <deleteSimpleURLForwardRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <recordID>string</recordID>\n      </deleteSimpleURLForwardRequest>\n    </deleteSimpleURLForward>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "determineSMSCost": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <determineSMSCost>\n      <determineSMSCostRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <destination>string</destination>\n        <message>string</message>\n      </determineSMSCostRequest>\n    </determineSMSCost>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "disableAutoRenewal": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <disableAutoRenewal>\n      <disableAutoRenewalRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <associationID>string</associationID>\n      </disableAutoRenewalRequest>\n    </disableAutoRenewal>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "disableDnssec": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <disableDnssec>\n      <disableDnssecRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n      </disableDnssecRequest>\n    </disableDnssec>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "disableIDProtection": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <disableIDProtection>\n      <disableIDProtectionRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n      </disableIDProtectionRequest>\n    </disableIDProtection>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "domainInfo": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <domainInfo>\n      <domainInfoRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <associationID>string</associationID>\n      </domainInfoRequest>\n    </domainInfo>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "domainRegister": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <domainRegister>\n      <domainRegisterRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <years>string</years>\n        <nameServerRequest/>\n        <registrant_organisation>string</registrant_organisation>\n        <registrant_firstname>string</registrant_firstname>\n        <registrant_lastname>string</registrant_lastname>\n        <addressArray/>\n        <registrant_suburb>string</registrant_suburb>\n        <registrant_state>string</registrant_state>\n        <registrant_country>string</registrant_country>\n        <registrant_postcode>string</registrant_postcode>\n        <registrant_phone>string</registrant_phone>\n        <registrant_fax>string</registrant_fax>\n        <registrant_email>string</registrant_email>\n        <technical_organisation>string</technical_organisation>\n        <technical_firstname>string</technical_firstname>\n        <technical_lastname>string</technical_lastname>\n        <technical_suburb>string</technical_suburb>\n        <technical_state>string</technical_state>\n        <technical_country>string</technical_country>\n        <technical_postcode>string</technical_postcode>\n        <technical_phone>string</technical_phone>\n        <technical_fax>string</technical_fax>\n        <technical_email>string</technical_email>\n        <admin_organisation>string</admin_organisation>\n        <admin_firstname>string</admin_firstname>\n        <admin_lastname>string</admin_lastname>\n        <admin_suburb>string</admin_suburb>\n        <admin_state>string</admin_state>\n        <admin_country>string</admin_country>\n        <admin_postcode>string</admin_postcode>\n        <admin_phone>string</admin_phone>\n        <admin_fax>string</admin_fax>\n        <admin_email>string</admin_email>\n        <billing_organisation>string</billing_organisation>\n        <billing_firstname>string</billing_firstname>\n        <billing_lastname>string</billing_lastname>\n        <billing_suburb>string</billing_suburb>\n        <billing_state>string</billing_state>\n        <billing_country>string</billing_country>\n        <billing_postcode>string</billing_postcode>\n        <billing_phone>string</billing_phone>\n        <billing_fax>string</billing_fax>\n        <billing_email>string</billing_email>\n        <idProtect>string</idProtect>\n        <specialConditionsAgree>true</specialConditionsAgree>\n        <autoRenew>true</autoRenew>\n        <premium>true</premium>\n        <costPrice>57</costPrice>\n        <eligibility>string</eligibility>\n        <transferLock>true</transferLock>\n        <dnsConfig>100</dnsConfig>\n        <skipEmail>true</skipEmail>\n      </domainRegisterRequest>\n    </domainRegister>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "domainRegisterAU": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <domainRegisterAU>\n      <domainRegisterAURequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <years>string</years>\n        <nameServerRequest>\n          <@_SOAP-ENC:arrayType/>\n        </nameServerRequest>\n        <registrant_organisation>string</registrant_organisation>\n        <registrant_firstname>string</registrant_firstname>\n        <registrant_lastname>string</registrant_lastname>\n        <addressArray/>\n        <registrant_suburb>string</registrant_suburb>\n        <registrant_state>string</registrant_state>\n        <registrant_country>string</registrant_country>\n        <registrant_postcode>string</registrant_postcode>\n        <registrant_phone>string</registrant_phone>\n        <registrant_fax>string</registrant_fax>\n        <registrant_email>string</registrant_email>\n        <technical_organisation>string</technical_organisation>\n        <technical_firstname>string</technical_firstname>\n        <technical_lastname>string</technical_lastname>\n        <technical_suburb>string</technical_suburb>\n        <technical_state>string</technical_state>\n        <technical_country>string</technical_country>\n        <technical_postcode>string</technical_postcode>\n        <technical_phone>string</technical_phone>\n        <technical_fax>string</technical_fax>\n        <technical_email>string</technical_email>\n        <registrantName>string</registrantName>\n        <registrantID>string</registrantID>\n        <registrantIDType>string</registrantIDType>\n        <eligibilityName>string</eligibilityName>\n        <eligibilityType>string</eligibilityType>\n        <eligibilityID>string</eligibilityID>\n        <eligibilityIDType>string</eligibilityIDType>\n        <associationID>string</associationID>\n        <associationAuthInfo>string</associationAuthInfo>\n        <autoRenew>true</autoRenew>\n      </domainRegisterAURequest>\n    </domainRegisterAU>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "domainRegisterUK": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <domainRegisterUK>\n      <domainRegisterUKRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <years>string</years>\n        <nameServerRequest>\n          <@_SOAP-ENC:arrayType/>\n        </nameServerRequest>\n        <registrant_organisation>string</registrant_organisation>\n        <registrant_firstname>string</registrant_firstname>\n        <registrant_lastname>string</registrant_lastname>\n        <addressArray>\n          <@_SOAP-ENC:arrayType/>\n        </addressArray>\n        <registrant_suburb>string</registrant_suburb>\n        <registrant_state>string</registrant_state>\n        <registrant_country>string</registrant_country>\n        <registrant_postcode>string</registrant_postcode>\n        <registrant_phone>string</registrant_phone>\n        <registrant_fax>string</registrant_fax>\n        <registrant_email>string</registrant_email>\n        <tradingName>string</tradingName>\n        <number>string</number>\n        <type>string</type>\n        <optout>string</optout>\n        <autoRenew>true</autoRenew>\n      </domainRegisterUKRequest>\n    </domainRegisterUK>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "domainRegisterUS": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <domainRegisterUS>\n      <domainRegisterUSRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <years>string</years>\n        <nameServerRequest>\n          <@_SOAP-ENC:arrayType/>\n        </nameServerRequest>\n        <registrant_organisation>string</registrant_organisation>\n        <registrant_firstname>string</registrant_firstname>\n        <registrant_lastname>string</registrant_lastname>\n        <addressArray/>\n        <registrant_suburb>string</registrant_suburb>\n        <registrant_state>string</registrant_state>\n        <registrant_country>string</registrant_country>\n        <registrant_postcode>string</registrant_postcode>\n        <registrant_phone>string</registrant_phone>\n        <registrant_fax>string</registrant_fax>\n        <registrant_email>string</registrant_email>\n        <technical_organisation>string</technical_organisation>\n        <technical_firstname>string</technical_firstname>\n        <technical_lastname>string</technical_lastname>\n        <technical_suburb>string</technical_suburb>\n        <technical_state>string</technical_state>\n        <technical_country>string</technical_country>\n        <technical_postcode>string</technical_postcode>\n        <technical_phone>string</technical_phone>\n        <technical_fax>string</technical_fax>\n        <technical_email>string</technical_email>\n        <admin_organisation>string</admin_organisation>\n        <admin_firstname>string</admin_firstname>\n        <admin_lastname>string</admin_lastname>\n        <admin_suburb>string</admin_suburb>\n        <admin_state>string</admin_state>\n        <admin_country>string</admin_country>\n        <admin_postcode>string</admin_postcode>\n        <admin_phone>string</admin_phone>\n        <admin_fax>string</admin_fax>\n        <admin_email>string</admin_email>\n        <billing_organisation>string</billing_organisation>\n        <billing_firstname>string</billing_firstname>\n        <billing_lastname>string</billing_lastname>\n        <billing_suburb>string</billing_suburb>\n        <billing_state>string</billing_state>\n        <billing_country>string</billing_country>\n        <billing_postcode>string</billing_postcode>\n        <billing_phone>string</billing_phone>\n        <billing_fax>string</billing_fax>\n        <billing_email>string</billing_email>\n        <appPurpose>string</appPurpose>\n        <nexusCategory>string</nexusCategory>\n        <idProtect>string</idProtect>\n        <autoRenew>true</autoRenew>\n      </domainRegisterUSRequest>\n    </domainRegisterUS>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "domainReleaseUK": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <domainReleaseUK>\n      <domainReleaseUKRequest>\n        <resellerID>100</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <tagName>string</tagName>\n        <newResellerID>100</newResellerID>\n      </domainReleaseUKRequest>\n    </domainReleaseUK>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "domainRenewRequired": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <domainRenewRequired>\n      <domainRenewRequiredRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <authInfo>string</authInfo>\n      </domainRenewRequiredRequest>\n    </domainRenewRequired>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "domainTransferUK": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <domainTransferUK>\n      <domainTransferUKRequest>\n        <resellerID>100</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <email>string</email>\n        <authInfo>string</authInfo>\n      </domainTransferUKRequest>\n    </domainTransferUK>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "editSimpleURLForward": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <editSimpleURLForward>\n      <editSimpleURLForwardRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <recordID>string</recordID>\n        <source>string</source>\n        <destination>string</destination>\n      </editSimpleURLForwardRequest>\n    </editSimpleURLForward>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "enableAutoRenewal": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <enableAutoRenewal>\n      <enableAutoRenewalRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <associationID>string</associationID>\n      </enableAutoRenewalRequest>\n    </enableAutoRenewal>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "enableDnssec": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <enableDnssec>\n      <enableDnssecRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n      </enableDnssecRequest>\n    </enableDnssec>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "enableIDProtection": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <enableIDProtection>\n      <enableIDProtectionRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n      </enableIDProtectionRequest>\n    </enableIDProtection>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "generateAuEligibility": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <generateAuEligibility>\n      <generateAuEligibilityRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <registrationIdentifier>string</registrationIdentifier>\n        <type>string</type>\n      </generateAuEligibilityRequest>\n    </generateAuEligibility>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "getAuEntitlements": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <getAuEntitlements>\n      <getAuEntitlementsRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <label>string</label>\n      </getAuEntitlementsRequest>\n    </getAuEntitlements>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "getDNSRecord": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <getDNSRecord>\n      <getDNSRecordRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <recordID>string</recordID>\n      </getDNSRecordRequest>\n    </getDNSRecord>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "getDnssecRecords": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <getDnssecRecords>\n      <getDnssecRecordsRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n      </getDnssecRecordsRequest>\n    </getDnssecRecords>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "getDomainEligibilityFields": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <getDomainEligibilityFields>\n      <getDomainEligibilityFieldsRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <extension>string</extension>\n      </getDomainEligibilityFieldsRequest>\n    </getDomainEligibilityFields>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "getDomainExtensionOptions": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <getDomainExtensionOptions>\n      <getDomainExtensionOptionsRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <tld>string</tld>\n      </getDomainExtensionOptionsRequest>\n    </getDomainExtensionOptions>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "getDomainPricing": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <getDomainPricing>\n      <getDomainPricingRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n      </getDomainPricingRequest>\n    </getDomainPricing>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "getSSLPricing": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <getSSLPricing>\n      <getSSLPricingRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n      </getSSLPricingRequest>\n    </getSSLPricing>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "getSimpleURLForwards": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <getSimpleURLForwards>\n      <getSimpleURLForwardsRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n      </getSimpleURLForwardsRequest>\n    </getSimpleURLForwards>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "getTransferredAwayDomains": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <getTransferredAwayDomains>\n      <getTransferredAwayDomainsRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <startDate>string</startDate>\n        <endDate>string</endDate>\n      </getTransferredAwayDomainsRequest>\n    </getTransferredAwayDomains>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "getUSNexusData": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <getUSNexusData>\n      <getUSNexusDataRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n      </getUSNexusDataRequest>\n    </getUSNexusData>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "getWHMCSModulesVersions": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <getWHMCSModulesVersions>\n      <getWHMCSModulesVersionsRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n      </getWHMCSModulesVersionsRequest>\n    </getWHMCSModulesVersions>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "hostingChangePackage": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <hostingChangePackage>\n      <hostingChangePackageRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <identifier>string</identifier>\n        <newPlanName>string</newPlanName>\n        <hoid>string</hoid>\n      </hostingChangePackageRequest>\n    </hostingChangePackage>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "hostingChangePassword": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <hostingChangePassword>\n      <hostingChangePasswordRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <identifier>string</identifier>\n        <newPassword>string</newPassword>\n        <hoid>string</hoid>\n      </hostingChangePasswordRequest>\n    </hostingChangePassword>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "hostingCheckFirewall": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <hostingCheckFirewall>\n      <hostingCheckFirewallRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <ipAddress>string</ipAddress>\n        <hoid>string</hoid>\n      </hostingCheckFirewallRequest>\n    </hostingCheckFirewall>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "hostingDisableTempUrl": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <hostingDisableTempUrl>\n      <hostingGetServiceRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <identifier>string</identifier>\n        <hoid>string</hoid>\n      </hostingGetServiceRequest>\n    </hostingDisableTempUrl>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "hostingEnableTempUrl": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <hostingEnableTempUrl>\n      <hostingGetServiceRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <identifier>string</identifier>\n        <hoid>string</hoid>\n      </hostingGetServiceRequest>\n    </hostingEnableTempUrl>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "hostingGetLogin": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <hostingGetLogin>\n      <hostingGetServiceRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <identifier>string</identifier>\n        <hoid>string</hoid>\n      </hostingGetServiceRequest>\n    </hostingGetLogin>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "hostingGetService": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <hostingGetService>\n      <hostingGetServiceRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <identifier>string</identifier>\n        <hoid>string</hoid>\n      </hostingGetServiceRequest>\n    </hostingGetService>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "hostingListPackages": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <hostingListPackages>\n      <hostingListPackagesRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <product>string</product>\n      </hostingListPackagesRequest>\n    </hostingListPackages>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "hostingPurchaseService": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <hostingPurchaseService>\n      <hostingPurchaseServiceRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <planName>string</planName>\n        <domain>string</domain>\n        <email>string</email>\n        <username>string</username>\n        <password>string</password>\n        <first_name>string</first_name>\n        <last_name>string</last_name>\n      </hostingPurchaseServiceRequest>\n    </hostingPurchaseService>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "hostingRecreateService": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <hostingRecreateService>\n      <hostingRecreateServiceRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <hoid>string</hoid>\n        <newPassword>string</newPassword>\n        <api_method>string</api_method>\n        <whmcs_ver>string</whmcs_ver>\n        <whmcs_mod_ver>string</whmcs_mod_ver>\n      </hostingRecreateServiceRequest>\n    </hostingRecreateService>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "hostingSuspendService": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <hostingSuspendService>\n      <hostingSuspendServiceRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <reason>string</reason>\n        <identifier>string</identifier>\n        <hoid>string</hoid>\n      </hostingSuspendServiceRequest>\n    </hostingSuspendService>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "hostingTerminateService": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <hostingTerminateService>\n      <hostingTerminateServiceRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <identifier>string</identifier>\n        <hoid>string</hoid>\n      </hostingTerminateServiceRequest>\n    </hostingTerminateService>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "hostingUnblockFirewall": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <hostingUnblockFirewall>\n      <hostingCheckFirewallRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <ipAddress>string</ipAddress>\n        <hoid>string</hoid>\n      </hostingCheckFirewallRequest>\n    </hostingUnblockFirewall>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "hostingUnsuspendService": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <hostingUnsuspendService>\n      <hostingUnsuspendServiceRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <identifier>string</identifier>\n        <hoid>string</hoid>\n      </hostingUnsuspendServiceRequest>\n    </hostingUnsuspendService>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "initiateAUCOR": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <initiateAUCOR>\n      <initiateAUCORRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <years>100</years>\n      </initiateAUCORRequest>\n    </initiateAUCOR>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "isDomainTransferrable": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <isDomainTransferrable>\n      <isDomainTransferrableRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <authInfo>string</authInfo>\n      </isDomainTransferrableRequest>\n    </isDomainTransferrable>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "listAllHosts": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <listAllHosts>\n      <listAllHostsRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n      </listAllHostsRequest>\n    </listAllHosts>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "listAvailableDomainExtensions": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <listAvailableDomainExtensions>\n      <listAvailableDomainExtensionsRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n      </listAvailableDomainExtensionsRequest>\n    </listAvailableDomainExtensions>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "listContacts": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <listContacts>\n      <listContactsRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n      </listContactsRequest>\n    </listContacts>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "listDNSZone": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <listDNSZone>\n      <listDNSZoneRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n      </listDNSZoneRequest>\n    </listDNSZone>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "listDomainCategories": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <listDomainCategories>\n      <listDomainCategoriesRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n      </listDomainCategoriesRequest>\n    </listDomainCategories>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "listDomains": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <listDomains>\n      <listDomainsRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <page>100</page>\n        <limit>100</limit>\n        <status>string</status>\n      </listDomainsRequest>\n    </listDomains>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "listEmailToSMSForwarders": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <listEmailToSMSForwarders>\n      <listEmailToSMSForwardersRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n      </listEmailToSMSForwardersRequest>\n    </listEmailToSMSForwarders>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "listHost": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <listHost>\n      <listHostRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <host>string</host>\n        <domainName>string</domainName>\n      </listHostRequest>\n    </listHost>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "listHosting": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <listHosting>\n      <listHostingRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <status>string</status>\n        <page>100</page>\n        <limit>100</limit>\n      </listHostingRequest>\n    </listHosting>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "listMailForwards": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <listMailForwards>\n      <listMailForwardsRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n      </listMailForwardsRequest>\n    </listMailForwards>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "listProtectedContacts": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <listProtectedContacts>\n      <listContactsRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n      </listContactsRequest>\n    </listProtectedContacts>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "lockDomain": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <lockDomain>\n      <lockDomainRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n      </lockDomainRequest>\n    </lockDomain>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "maxYearsCanRenewFor": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <maxYearsCanRenewFor>\n      <maxYearsCanRenewForRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <associationID>string</associationID>\n      </maxYearsCanRenewForRequest>\n    </maxYearsCanRenewFor>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "rawDomainContacts": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <rawDomainContacts>\n      <rawDomainContactsRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <authInfo>string</authInfo>\n      </rawDomainContactsRequest>\n    </rawDomainContacts>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "removeDomainCategory": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <removeDomainCategory>\n      <removeDomainCategoryRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <id>string</id>\n      </removeDomainCategoryRequest>\n    </removeDomainCategory>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "renewDomain": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <renewDomain>\n      <renewDomainRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <years>100</years>\n        <costPrice>12</costPrice>\n        <premium>true</premium>\n        <associationID>string</associationID>\n      </renewDomainRequest>\n    </renewDomain>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "resendChangeOfRegistrantEmails": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <resendChangeOfRegistrantEmails>\n      <resendChangeOfRegistrantEmailsRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n      </resendChangeOfRegistrantEmailsRequest>\n    </resendChangeOfRegistrantEmails>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "resendRegistrantUpdateEmails": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <resendRegistrantUpdateEmails>\n      <resendRegistrantUpdateEmailsRequest>\n        <resellerID>100</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n      </resendRegistrantUpdateEmailsRequest>\n    </resendRegistrantUpdateEmails>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "resendTransferEmail": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <resendTransferEmail>\n      <resendTransferEmailRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n      </resendTransferEmailRequest>\n    </resendTransferEmail>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "resendVerificationEmail": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <resendVerificationEmail>\n      <resendVerificationEmailRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n      </resendVerificationEmailRequest>\n    </resendVerificationEmail>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "restoreDomain": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <restoreDomain>\n      <restoreDomainRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <redemptionPrice>68</redemptionPrice>\n        <premium>true</premium>\n      </restoreDomainRequest>\n    </restoreDomain>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "resubmitFailedTransfer": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <resubmitFailedTransfer>\n      <resubmitFailedTransferRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <newPassword>string</newPassword>\n      </resubmitFailedTransferRequest>\n    </resubmitFailedTransfer>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "sendSMS": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <sendSMS>\n      <sendSMSRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <destination>string</destination>\n        <senderID>string</senderID>\n        <message>string</message>\n      </sendSMSRequest>\n    </sendSMS>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "subscriptionCreateClient": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <subscriptionCreateClient>\n      <createClientRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <firstname>string</firstname>\n        <lastname>string</lastname>\n        <email>string</email>\n        <phone>string</phone>\n        <address>string</address>\n        <address2>string</address2>\n        <suburb>string</suburb>\n        <postcode>string</postcode>\n        <state>string</state>\n        <country>string</country>\n        <company>string</company>\n        <agreement>string</agreement>\n        <password>string</password>\n        <description>string</description>\n        <domainPrefix>string</domainPrefix>\n      </createClientRequest>\n    </subscriptionCreateClient>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "subscriptionGetClient": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <subscriptionGetClient>\n      <getClientRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <identifier>string</identifier>\n      </getClientRequest>\n    </subscriptionGetClient>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "subscriptionGetDetails": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <subscriptionGetDetails>\n      <getSubscriptionForClientRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <identifier>string</identifier>\n      </getSubscriptionForClientRequest>\n    </subscriptionGetDetails>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "subscriptionListClientSubscriptions": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <subscriptionListClientSubscriptions>\n      <getSubscriptionsForClientRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <identifier>string</identifier>\n      </getSubscriptionsForClientRequest>\n    </subscriptionListClientSubscriptions>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "subscriptionListClients": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <subscriptionListClients>\n      <listClientsRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <page>100</page>\n      </listClientsRequest>\n    </subscriptionListClients>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "subscriptionListPurchasable": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <subscriptionListPurchasable>\n      <getSubscriptionsForClientsRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n      </getSubscriptionsForClientsRequest>\n    </subscriptionListPurchasable>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "subscriptionPurchase": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <subscriptionPurchase>\n      <purchaseSubscriptionRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <identifier>string</identifier>\n        <subscriptionOrderArray>\n          <@_SOAP-ENC:arrayType/>\n        </subscriptionOrderArray>\n      </purchaseSubscriptionRequest>\n    </subscriptionPurchase>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "subscriptionSuspend": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <subscriptionSuspend>\n      <suspendSubscriptionRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <identifier>string</identifier>\n      </suspendSubscriptionRequest>\n    </subscriptionSuspend>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "subscriptionTerminate": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <subscriptionTerminate>\n      <terminateSubscriptionRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <identifier>string</identifier>\n      </terminateSubscriptionRequest>\n    </subscriptionTerminate>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "subscriptionUnsuspend": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <subscriptionUnsuspend>\n      <unsuspendSubscriptionRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <identifier>string</identifier>\n      </unsuspendSubscriptionRequest>\n    </subscriptionUnsuspend>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "subscriptionUpdateClient": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <subscriptionUpdateClient>\n      <updateClientRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <identifier>string</identifier>\n        <firstname>string</firstname>\n        <lastname>string</lastname>\n        <company>string</company>\n        <email>string</email>\n        <phone>string</phone>\n        <address>string</address>\n        <address2>string</address2>\n        <suburb>string</suburb>\n        <postcode>string</postcode>\n        <state>string</state>\n        <country>string</country>\n        <description>string</description>\n      </updateClientRequest>\n    </subscriptionUpdateClient>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "subscriptionUpdateQuantity": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <subscriptionUpdateQuantity>\n      <updateSubscriptionQuantityRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <identifier>string</identifier>\n        <quantity>string</quantity>\n      </updateSubscriptionQuantityRequest>\n    </subscriptionUpdateQuantity>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "transferCancel": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <transferCancel>\n      <transferCancelRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n      </transferCancelRequest>\n    </transferCancel>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "transferDomain": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <transferDomain>\n      <transferDomainRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <authInfo>string</authInfo>\n        <organisation>string</organisation>\n        <firstname>string</firstname>\n        <lastname>string</lastname>\n        <addressArray>\n          <@_SOAP-ENC:arrayType/>\n        </addressArray>\n        <suburb>string</suburb>\n        <state>string</state>\n        <country>string</country>\n        <postcode>string</postcode>\n        <phone>string</phone>\n        <fax>string</fax>\n        <email>string</email>\n        <doRenewal>string</doRenewal>\n        <idProtect>string</idProtect>\n        <autoRenew>true</autoRenew>\n        <renewYears>100</renewYears>\n        <costPrice>17</costPrice>\n        <premium>true</premium>\n        <eligibility>string</eligibility>\n        <transferLock>true</transferLock>\n        <nameServerRequest/>\n        <dnsConfig>100</dnsConfig>\n      </transferDomainRequest>\n    </transferDomain>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "transferOutboundApprove": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <transferOutboundApprove>\n      <transferOutboundApproveRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n      </transferOutboundApproveRequest>\n    </transferOutboundApprove>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "transferReject": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <transferReject>\n      <transferRejectRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <reason>string</reason>\n      </transferRejectRequest>\n    </transferReject>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "unassignDomainCategory": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <unassignDomainCategory>\n      <unassignDomainCategoryRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <categoryId>string</categoryId>\n        <categoryName>string</categoryName>\n      </unassignDomainCategoryRequest>\n    </unassignDomainCategory>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "unlockDomain": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <unlockDomain>\n      <unlockDomainRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n      </unlockDomainRequest>\n    </unlockDomain>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "updateContact": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <updateContact>\n      <updateContactRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <appPurpose>string</appPurpose>\n        <nexusCategory>string</nexusCategory>\n        <nz_privacy>true</nz_privacy>\n        <registrant_organisation>string</registrant_organisation>\n        <registrant_firstname>string</registrant_firstname>\n        <registrant_lastname>string</registrant_lastname>\n        <addressArray/>\n        <registrant_suburb>string</registrant_suburb>\n        <registrant_state>string</registrant_state>\n        <registrant_country>string</registrant_country>\n        <registrant_postcode>string</registrant_postcode>\n        <registrant_phone>string</registrant_phone>\n        <registrant_fax>string</registrant_fax>\n        <registrant_email>string</registrant_email>\n        <admin_organisation>string</admin_organisation>\n        <admin_firstname>string</admin_firstname>\n        <admin_lastname>string</admin_lastname>\n        <admin_suburb>string</admin_suburb>\n        <admin_state>string</admin_state>\n        <admin_country>string</admin_country>\n        <admin_postcode>string</admin_postcode>\n        <admin_phone>string</admin_phone>\n        <admin_fax>string</admin_fax>\n        <admin_email>string</admin_email>\n        <technical_organisation>string</technical_organisation>\n        <technical_firstname>string</technical_firstname>\n        <technical_lastname>string</technical_lastname>\n        <technical_suburb>string</technical_suburb>\n        <technical_state>string</technical_state>\n        <technical_country>string</technical_country>\n        <technical_postcode>string</technical_postcode>\n        <technical_phone>string</technical_phone>\n        <technical_fax>string</technical_fax>\n        <technical_email>string</technical_email>\n        <billing_organisation>string</billing_organisation>\n        <billing_firstname>string</billing_firstname>\n        <billing_lastname>string</billing_lastname>\n        <billing_suburb>string</billing_suburb>\n        <billing_state>string</billing_state>\n        <billing_country>string</billing_country>\n        <billing_postcode>string</billing_postcode>\n        <billing_phone>string</billing_phone>\n        <billing_fax>string</billing_fax>\n        <billing_email>string</billing_email>\n      </updateContactRequest>\n    </updateContact>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "updateDNSRecord": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <updateDNSRecord>\n      <updateDNSRecordRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <recordName>string</recordName>\n        <recordType>string</recordType>\n        <recordContent>string</recordContent>\n        <recordTTL>string</recordTTL>\n        <recordPrio>100</recordPrio>\n        <recordID>string</recordID>\n      </updateDNSRecordRequest>\n    </updateDNSRecord>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "updateDomainCategory": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <updateDomainCategory>\n      <updateDomainCategoryRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <id>string</id>\n        <name>string</name>\n        <note>string</note>\n      </updateDomainCategoryRequest>\n    </updateDomainCategory>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "updateDomainPassword": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <updateDomainPassword>\n      <updateDomainPasswordRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <newPassword>string</newPassword>\n      </updateDomainPasswordRequest>\n    </updateDomainPassword>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "updateNameServers": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <updateNameServers>\n      <updateNameServersRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <nameServerRequest>\n          <@_SOAP-ENC:arrayType/>\n        </nameServerRequest>\n        <dnsConfigType>100</dnsConfigType>\n        <dnsConfig>100</dnsConfig>\n      </updateNameServersRequest>\n    </updateNameServers>\n  </soap:Body>\n</soap:Envelope>\n"
+                },
+                "updateXXXMembershipDetails": {
+                  "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <updateXXXMembershipDetails>\n      <updateXXXMembershipDetailsRequest>\n        <resellerID>string</resellerID>\n        <apiKey>string</apiKey>\n        <domainName>string</domainName>\n        <membershipToken>string</membershipToken>\n      </updateXXXMembershipDetailsRequest>\n    </updateXXXMembershipDetails>\n  </soap:Body>\n</soap:Envelope>\n"
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
-            "description": "Plant response",
+            "description": "hostingGetService response / hostingRecreateService response / hostingTerminateService response / hostingPurchaseService response / hostingChangePackage response / hostingChangePassword response / hostingSuspendService response / hostingUnsuspendService response / hostingListPackages response / hostingGetLogin response / businessCheckRegistration response / balanceQuery response / listAvailableDomainExtensions response / getDomainEligibilityFields response / generateAuEligibility response / getDomainPricing response / getSSLPricing response / restoreDomain response / resendVerificationEmail response / maxYearsCanRenewFor response / updateXXXMembershipDetails response / getUSNexusData response / getDomainExtensionOptions response / bulkCheckDomain response / checkDomain response / domainInfo response / bulkDomainInfo response / listDomains response / domainRegister response / domainRegisterAU response / domainRegisterUK response / domainRegisterUS response / resendTransferEmail response / domainRenewRequired response / transferDomain response / updateDomainPassword response / updateNameServers response / lockDomain response / unlockDomain response / renewDomain response / domainReleaseUK response / domainTransferUK response / getTransferredAwayDomains response / resubmitFailedTransfer response / initiateAUCOR response / enableAutoRenewal response / disableAutoRenewal response / canRenewDomain response / checkDomainEPPCode response / rawDomainContacts response / isDomainTransferrable response / updateContact response / listContacts response / listProtectedContacts response / enableIDProtection response / disableIDProtection response / listHost response / listAllHosts response / addHost response / deleteHost response / addHostIP response / deleteHostIP response / addDNSZone response / deleteDNSZone response / addDNSRecord response / updateDNSRecord response / deleteDNSRecord response / getDNSRecord response / listDNSZone response / addMailForward response / deleteMailForward response / listMailForwards response / addSimpleURLForward response / getSimpleURLForwards response / editSimpleURLForward response / deleteSimpleURLForward response / enableDnssec response / disableDnssec response / getDnssecRecords response / SSL_decodeCSR response / SSL_getSSLCertificate response / SSL_getCertStatus response / SSL_getCertSimpleStatus response / SSL_resendIssuedCertificateEmail response / SSL_resendDVEmail response / SSL_purchaseSSLCertificate response / SSL_renewSSLCertificate response / SSL_cancelSSLCertificate response / SSL_reissueCertificate response / SSL_getDomainBeacon response / SSL_checkDomainBeacon response / SSL_listAllCerts response / SSL_checkTxtCodes response / SSL_generateCSR response / sendSMS response / determineSMSCost response / listEmailToSMSForwarders response / addEmailToSMSForwarder response / deleteEmailToSMSForwarder response / DNSSECAddDS response / DNSSECRemoveDS response / DNSSECListDS response / getWHMCSModulesVersions response / bulkHostingInfo response / resendRegistrantUpdateEmails response / cancelRegistrantUpdate response / listHosting response / transferOutboundApprove response / transferReject response / resendChangeOfRegistrantEmails response / transferCancel response / hostingEnableTempUrl response / hostingDisableTempUrl response / hostingCheckFirewall response / hostingUnblockFirewall response / getAuEntitlements response / subscriptionCreateClient response / subscriptionUpdateClient response / subscriptionGetClient response / subscriptionListClientSubscriptions response / subscriptionListClients response / subscriptionListPurchasable response / subscriptionGetDetails response / subscriptionPurchase response / subscriptionUpdateQuantity response / subscriptionSuspend response / subscriptionTerminate response / subscriptionUnsuspend response / listDomainCategories response / createDomainCategory response / updateDomainCategory response / removeDomainCategory response / assignDomainCategory response / unassignDomainCategory response / deleteDomain response",
             "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Plant"
+              "text/plain": {
+                "examples": {
+                  "DNSSECAddDS response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <DNSSECAddDSResponse>\n      <DNSSECAddDSResponse>\n        <status>string</status>\n        <UUID>string</UUID>\n        <errorMessage>string</errorMessage>\n      </DNSSECAddDSResponse>\n    </DNSSECAddDSResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "DNSSECListDS response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <DNSSECListDSResponse>\n      <DNSSECListDSResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <arrayDNSSECDSData>\n          <@_SOAP-ENC:arrayType/>\n        </arrayDNSSECDSData>\n      </DNSSECListDSResponse>\n    </DNSSECListDSResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "DNSSECRemoveDS response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <DNSSECRemoveDSResponse>\n      <DNSSECRemoveDSResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </DNSSECRemoveDSResponse>\n    </DNSSECRemoveDSResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "SSL_cancelSSLCertificate response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_cancelSSLCertificateResponse>\n      <SSL_cancelSSLCertificateResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <certStatus>string</certStatus>\n      </SSL_cancelSSLCertificateResponse>\n    </SSL_cancelSSLCertificateResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "SSL_checkDomainBeacon response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_checkDomainBeaconResponse>\n      <SSL_checkDomainBeaconResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <beacon>string</beacon>\n        <domain>string</domain>\n      </SSL_checkDomainBeaconResponse>\n    </SSL_checkDomainBeaconResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "SSL_checkTxtCodes response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_checkTxtCodesResponse>\n      <SSL_checkTxtCodesResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <validationStatus>string</validationStatus>\n        <SSL_checkTxtCodesResponseArray>\n          <domain>string</domain>\n          <status>string</status>\n        </SSL_checkTxtCodesResponseArray>\n      </SSL_checkTxtCodesResponse>\n    </SSL_checkTxtCodesResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "SSL_decodeCSR response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_decodeCSRResponse>\n      <SSL_decodeCSRResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <state>string</state>\n        <country>string</country>\n        <city>string</city>\n        <organisationUnit>string</organisationUnit>\n        <organisation>string</organisation>\n        <commonName>string</commonName>\n        <emailAddress>string</emailAddress>\n        <SSL_decodeCSRSubjectAltNamesResponseArray>\n          <@_SOAP-ENC:arrayType/>\n        </SSL_decodeCSRSubjectAltNamesResponseArray>\n        <privateKeyLength>100</privateKeyLength>\n      </SSL_decodeCSRResponse>\n    </SSL_decodeCSRResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "SSL_generateCSR response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_generateCSRResponse>\n      <SSL_generateCSRResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <privKey>string</privKey>\n        <selfSignCrt>string</selfSignCrt>\n        <csr>string</csr>\n      </SSL_generateCSRResponse>\n    </SSL_generateCSRResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "SSL_getCertSimpleStatus response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_getCertSimpleStatusResponse>\n      <SSL_getCertSimpleStatusResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <certStatus>string</certStatus>\n        <certID>string</certID>\n        <commonName>string</commonName>\n        <customerID>string</customerID>\n        <startDate>string</startDate>\n        <expireDate>string</expireDate>\n        <productName>string</productName>\n        <productYears>string</productYears>\n        <productType>string</productType>\n        <productID>string</productID>\n      </SSL_getCertSimpleStatusResponse>\n    </SSL_getCertSimpleStatusResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "SSL_getCertStatus response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_getCertStatusResponse>\n      <SSL_getCertStatusResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <commonName>string</commonName>\n        <reviewed>true</reviewed>\n        <domainValid>true</domainValid>\n        <orgValid>true</orgValid>\n        <issued>true</issued>\n        <startDate>string</startDate>\n        <expireDate>string</expireDate>\n        <isRefunded>true</isRefunded>\n        <isCancelled>true</isCancelled>\n        <isRevoked>true</isRevoked>\n      </SSL_getCertStatusResponse>\n    </SSL_getCertStatusResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "SSL_getDomainBeacon response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_getDomainBeaconResponse>\n      <SSL_getDomainBeaconResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <filename>string</filename>\n        <beacon>string</beacon>\n        <domain>string</domain>\n        <SSL_getBeaconResponseDNS>\n          <type>string</type>\n          <hostName>string</hostName>\n          <content>string</content>\n        </SSL_getBeaconResponseDNS>\n      </SSL_getDomainBeaconResponse>\n    </SSL_getDomainBeaconResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "SSL_getSSLCertificate response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_getSSLCertificateResponse>\n      <SSL_getSSLCertificateResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <certStatus>string</certStatus>\n        <cer>string</cer>\n        <p7b>string</p7b>\n        <certID>string</certID>\n        <commonName>string</commonName>\n        <expireDate>string</expireDate>\n        <caBundle>string</caBundle>\n        <type>string</type>\n      </SSL_getSSLCertificateResponse>\n    </SSL_getSSLCertificateResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "SSL_listAllCerts response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_listAllCertsResponse>\n      <SSL_listAllCertsResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <SSL_listAllCertsResponseArray>\n          <@_SOAP-ENC:arrayType/>\n        </SSL_listAllCertsResponseArray>\n      </SSL_listAllCertsResponse>\n    </SSL_listAllCertsResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "SSL_purchaseSSLCertificate response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_purchaseSSLCertificateResponse>\n      <SSL_purchaseSSLCertificateResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <certStatus>string</certStatus>\n        <certID>string</certID>\n        <commonName>string</commonName>\n      </SSL_purchaseSSLCertificateResponse>\n    </SSL_purchaseSSLCertificateResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "SSL_reissueCertificate response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_reissueCertificateResponse>\n      <SSL_reissueCertificateResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <newCertID>string</newCertID>\n        <cer>string</cer>\n        <p7b>string</p7b>\n      </SSL_reissueCertificateResponse>\n    </SSL_reissueCertificateResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "SSL_renewSSLCertificate response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_renewSSLCertificateResponse>\n      <SSL_renewSSLCertificateResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <certStatus>string</certStatus>\n        <certID>string</certID>\n        <commonName>string</commonName>\n      </SSL_renewSSLCertificateResponse>\n    </SSL_renewSSLCertificateResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "SSL_resendDVEmail response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_resendDVEmailResponse>\n      <SSL_resendDVEmailResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </SSL_resendDVEmailResponse>\n    </SSL_resendDVEmailResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "SSL_resendIssuedCertificateEmail response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <SSL_resendIssuedCertificateEmailResponse>\n      <SSL_resendIssuedCertificateEmailResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </SSL_resendIssuedCertificateEmailResponse>\n    </SSL_resendIssuedCertificateEmailResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "addDNSRecord response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <addDNSRecordResponse>\n      <addDNSRecordResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <id>string</id>\n        <domainName>string</domainName>\n        <recordName>string</recordName>\n        <recordType>string</recordType>\n        <recordContent>string</recordContent>\n        <recordTTL>100</recordTTL>\n        <recordPrio>100</recordPrio>\n      </addDNSRecordResponse>\n    </addDNSRecordResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "addDNSZone response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <addDNSZoneResponse>\n      <addDNSZoneResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </addDNSZoneResponse>\n    </addDNSZoneResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "addEmailToSMSForwarder response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <addEmailToSMSForwarderResponse>\n      <addEmailToSMSForwarderResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </addEmailToSMSForwarderResponse>\n    </addEmailToSMSForwarderResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "addHost response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <addHostResponse>\n      <addHostResponse>\n        <statusCode>100</statusCode>\n        <reason>string</reason>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </addHostResponse>\n    </addHostResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "addHostIP response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <addHostIPResponse>\n      <addHostIPResponse>\n        <statusCode>100</statusCode>\n        <reason>string</reason>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </addHostIPResponse>\n    </addHostIPResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "addMailForward response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <addMailForwardResponse>\n      <addMailForwardResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <id>100</id>\n      </addMailForwardResponse>\n    </addMailForwardResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "addSimpleURLForward response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <addSimpleURLForwardResponse>\n      <addSimpleURLForwardResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <id>100</id>\n        <hostname>string</hostname>\n        <url>string</url>\n        <redirecttype>string</redirecttype>\n      </addSimpleURLForwardResponse>\n    </addSimpleURLForwardResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "assignDomainCategory response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <assignDomainCategoryResponse>\n      <assignDomainCategoryResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </assignDomainCategoryResponse>\n    </assignDomainCategoryResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "balanceQuery response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <balanceQueryResponse>\n      <balanceQueryResponse>\n        <statusCode>100</statusCode>\n        <reason>string</reason>\n        <balance>string</balance>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </balanceQueryResponse>\n    </balanceQueryResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "bulkCheckDomain response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <bulkCheckDomainResponse>\n      <bulkCheckDomainResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <domainListArray>\n          <@_SOAP-ENC:arrayType/>\n        </domainListArray>\n      </bulkCheckDomainResponse>\n    </bulkCheckDomainResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "bulkDomainInfo response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <bulkDomainInfoResponse>\n      <bulkDomainInfoResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <bulkDomainInfoResponseArray>\n          <@_SOAP-ENC:arrayType/>\n        </bulkDomainInfoResponseArray>\n        <page>100</page>\n        <limit>100</limit>\n      </bulkDomainInfoResponse>\n    </bulkDomainInfoResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "bulkHostingInfo response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <bulkHostingInfoResponse>\n      <bulkHostingInfoResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <page>100</page>\n        <limit>100</limit>\n        <bulkHostingInfoResponseArray>\n          <@_SOAP-ENC:arrayType/>\n        </bulkHostingInfoResponseArray>\n      </bulkHostingInfoResponse>\n    </bulkHostingInfoResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "businessCheckRegistration response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <businessCheckRegistrationResponse>\n      <businessCheckRegistrationResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <registrationNumber>string</registrationNumber>\n        <registrationState>string</registrationState>\n        <entityStatus>string</entityStatus>\n        <asicNumber>string</asicNumber>\n        <entityName>string</entityName>\n        <entityTypeCode>string</entityTypeCode>\n        <tradingName>string</tradingName>\n        <legalName>string</legalName>\n        <organisationType>string</organisationType>\n        <state>string</state>\n        <postcode>string</postcode>\n      </businessCheckRegistrationResponse>\n    </businessCheckRegistrationResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "canRenewDomain response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <canRenewDomainResponse>\n      <canRenewDomainResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <yearsCanRenewFor>100</yearsCanRenewFor>\n        <redemptionUntil>string</redemptionUntil>\n      </canRenewDomainResponse>\n    </canRenewDomainResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "cancelRegistrantUpdate response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <cancelRegistrantUpdateResponse>\n      <cancelRegistrantUpdateResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </cancelRegistrantUpdateResponse>\n    </cancelRegistrantUpdateResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "checkDomain response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <checkDomainResponse>\n      <checkDomainResponse>\n        <available>100</available>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <costPrice>61</costPrice>\n        <basePrice>31</basePrice>\n        <premium>true</premium>\n        <requiresMembership>true</requiresMembership>\n        <requiresApplication>true</requiresApplication>\n        <preorderAvailable>true</preorderAvailable>\n      </checkDomainResponse>\n    </checkDomainResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "checkDomainEPPCode response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <checkDomainEPPCodeResponse>\n      <checkDomainEPPCodeResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </checkDomainEPPCodeResponse>\n    </checkDomainEPPCodeResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "createDomainCategory response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <createDomainCategoryResponse>\n      <createDomainCategoryResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <domainCategorySingleEntry>\n          <id>string</id>\n          <name>string</name>\n          <note>string</note>\n          <createdDate>2025-03-19T07:20:19.936Z</createdDate>\n        </domainCategorySingleEntry>\n      </createDomainCategoryResponse>\n    </createDomainCategoryResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "deleteDNSRecord response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <deleteDNSRecordResponse>\n      <deleteDNSRecordResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </deleteDNSRecordResponse>\n    </deleteDNSRecordResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "deleteDNSZone response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <deleteDNSZoneResponse>\n      <deleteDNSZoneResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </deleteDNSZoneResponse>\n    </deleteDNSZoneResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "deleteDomain response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <deleteDomainResponse>\n      <deleteDomainResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </deleteDomainResponse>\n    </deleteDomainResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "deleteEmailToSMSForwarder response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <deleteEmailToSMSForwarderResponse>\n      <deleteEmailToSMSForwarderResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </deleteEmailToSMSForwarderResponse>\n    </deleteEmailToSMSForwarderResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "deleteHost response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <deleteHostResponse>\n      <deleteHostResponse>\n        <statusCode>100</statusCode>\n        <reason>string</reason>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </deleteHostResponse>\n    </deleteHostResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "deleteHostIP response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <deleteHostIPResponse>\n      <deleteHostIPResponse>\n        <statusCode>100</statusCode>\n        <reason>string</reason>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </deleteHostIPResponse>\n    </deleteHostIPResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "deleteMailForward response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <deleteMailForwardResponse>\n      <deleteMailForwardResponse>\n        <statusCode>100</statusCode>\n        <reason>string</reason>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </deleteMailForwardResponse>\n    </deleteMailForwardResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "deleteSimpleURLForward response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <deleteSimpleURLForwardResponse>\n      <deleteSimpleURLForwardResponse>\n        <statusCode>100</statusCode>\n        <reason>string</reason>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </deleteSimpleURLForwardResponse>\n    </deleteSimpleURLForwardResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "determineSMSCost response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <determineSMSCostResponse>\n      <determineSMSCostResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <msgCount>100</msgCount>\n        <perMsgCost>string</perMsgCost>\n        <totalMsgCost>string</totalMsgCost>\n      </determineSMSCostResponse>\n    </determineSMSCostResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "disableAutoRenewal response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <disableAutoRenewalResponse>\n      <disableAutoRenewalResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </disableAutoRenewalResponse>\n    </disableAutoRenewalResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "disableDnssec response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <disableDnssecResponse>\n      <disableDnssecResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </disableDnssecResponse>\n    </disableDnssecResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "disableIDProtection response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <disableIDProtectionResponse>\n      <disableIDProtectionResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </disableIDProtectionResponse>\n    </disableIDProtectionResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "domainInfo response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <domainInfoResponse>\n      <domainInfoResponse>\n        <statusCode>100</statusCode>\n        <reason>string</reason>\n        <domainName>string</domainName>\n        <domainRoid>string</domainRoid>\n        <transfer_status>string</transfer_status>\n        <transfer_completed_by>string</transfer_completed_by>\n        <domain_status>string</domain_status>\n        <domain_expiry>string</domain_expiry>\n        <nameServerResponse>\n          <@_SOAP-ENC:arrayType/>\n        </nameServerResponse>\n        <email>string</email>\n        <dnsConfig>100</dnsConfig>\n        <dnsConfigName>string</dnsConfigName>\n        <domainCategoriesArray>\n          <@_SOAP-ENC:arrayType/>\n        </domainCategoriesArray>\n        <bulkInProgress>100</bulkInProgress>\n        <domainPassword>string</domainPassword>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <daysPastExpiry>100</daysPastExpiry>\n        <daysToExpiry>100</daysToExpiry>\n        <idProtect>string</idProtect>\n        <autoRenew>string</autoRenew>\n        <registryID>string</registryID>\n        <icannVerificationDateEnd>string</icannVerificationDateEnd>\n        <icannStatus>string</icannStatus>\n        <auRegistrantName>string</auRegistrantName>\n        <auRegistrantIDType>string</auRegistrantIDType>\n        <auRegistrantID>string</auRegistrantID>\n        <auEligibilityName>string</auEligibilityName>\n        <auEligibilityID>string</auEligibilityID>\n        <auEligibilityType>string</auEligibilityType>\n        <auEligibilityIDType>string</auEligibilityIDType>\n        <auEligibilityAssociationID>string</auEligibilityAssociationID>\n        <auEligibilityAssociationAuthInfo>string</auEligibilityAssociationAuthInfo>\n        <auPolicyID>string</auPolicyID>\n        <auPolicyIDDesc>string</auPolicyIDDesc>\n        <auAssociationID>string</auAssociationID>\n        <auAssociationAuthInfo>string</auAssociationAuthInfo>\n        <arrayDNSSECDSData>\n          <@_SOAP-ENC:arrayType/>\n        </arrayDNSSECDSData>\n        <canProcessRedemptionUntil>string</canProcessRedemptionUntil>\n        <createdDate>string</createdDate>\n        <au_valid_eligibility>true</au_valid_eligibility>\n        <au_eligibility_last_check>string</au_eligibility_last_check>\n      </domainInfoResponse>\n    </domainInfoResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "domainRegister response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <domainRegisterResponse>\n      <domainRegisterResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <costPrice>8</costPrice>\n        <pendingId>string</pendingId>\n      </domainRegisterResponse>\n    </domainRegisterResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "domainRegisterAU response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <domainRegisterAUResponse>\n      <domainRegisterAUResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <costPrice>59</costPrice>\n      </domainRegisterAUResponse>\n    </domainRegisterAUResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "domainRegisterUK response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <domainRegisterUKResponse>\n      <domainRegisterUKResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <costPrice>53</costPrice>\n      </domainRegisterUKResponse>\n    </domainRegisterUKResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "domainRegisterUS response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <domainRegisterUSResponse>\n      <domainRegisterUSResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <costPrice>25</costPrice>\n      </domainRegisterUSResponse>\n    </domainRegisterUSResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "domainReleaseUK response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <domainReleaseUKResponse>\n      <domainReleaseUKResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </domainReleaseUKResponse>\n    </domainReleaseUKResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "domainRenewRequired response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <domainRenewRequiredResponse>\n      <domainRenewRequiredResponse>\n        <statusCode>100</statusCode>\n        <reason>string</reason>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </domainRenewRequiredResponse>\n    </domainRenewRequiredResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "domainTransferUK response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <domainTransferUKResponse>\n      <domainTransferUKResponse>\n        <statusCode>100</statusCode>\n        <reason>string</reason>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </domainTransferUKResponse>\n    </domainTransferUKResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "editSimpleURLForward response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <editSimpleURLForwardResponse>\n      <editSimpleURLForwardResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </editSimpleURLForwardResponse>\n    </editSimpleURLForwardResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "enableAutoRenewal response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <enableAutoRenewalResponse>\n      <enableAutoRenewalResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </enableAutoRenewalResponse>\n    </enableAutoRenewalResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "enableDnssec response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <enableDnssecResponse>\n      <enableDnssecResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </enableDnssecResponse>\n    </enableDnssecResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "enableIDProtection response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <enableIDProtectionResponse>\n      <enableIDProtectionResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </enableIDProtectionResponse>\n    </enableIDProtectionResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "generateAuEligibility response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <generateAuEligibilityResponse>\n      <generateAuEligibilityResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <generateAuEligibilityResponseData>\n          <eligibilityType>string</eligibilityType>\n          <registrantID>string</registrantID>\n          <registrantIDType>string</registrantIDType>\n          <registrantName>string</registrantName>\n          <eligibilityIDType>string</eligibilityIDType>\n          <eligibilityName>string</eligibilityName>\n          <eligibilityID>string</eligibilityID>\n        </generateAuEligibilityResponseData>\n      </generateAuEligibilityResponse>\n    </generateAuEligibilityResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "getAuEntitlements response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <getAuEntitlementsResponse>\n      <getAuEntitlementsResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <contentionType>string</contentionType>\n        <getAuEntitlementsContentionArray>\n          <@_SOAP-ENC:arrayType/>\n        </getAuEntitlementsContentionArray>\n      </getAuEntitlementsResponse>\n    </getAuEntitlementsResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "getDNSRecord response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <getDNSRecordResponse>\n      <getDNSRecordResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <domainName>string</domainName>\n        <recordType>string</recordType>\n        <recordContent>string</recordContent>\n        <recordTTL>100</recordTTL>\n        <recordPrio>100</recordPrio>\n        <recordID>string</recordID>\n      </getDNSRecordResponse>\n    </getDNSRecordResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "getDnssecRecords response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <getDnssecRecordsResponse>\n      <getDnssecRecordsResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <dnssecRecordArray>\n          <@_SOAP-ENC:arrayType/>\n        </dnssecRecordArray>\n      </getDnssecRecordsResponse>\n    </getDnssecRecordsResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "getDomainEligibilityFields response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <getDomainEligibilityFieldsResponse>\n      <getDomainEligibilityFieldsResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <getDomainEligibilityFieldsArray>\n          <@_SOAP-ENC:arrayType/>\n        </getDomainEligibilityFieldsArray>\n      </getDomainEligibilityFieldsResponse>\n    </getDomainEligibilityFieldsResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "getDomainExtensionOptions response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <getDomainExtensionOptionsResponse>\n      <getDomainExtensionOptionsResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <canRenewWithin>string</canRenewWithin>\n        <cannotRenewAfter>string</cannotRenewAfter>\n        <cannotRestoreAfter>string</cannotRestoreAfter>\n        <deletesAfter>string</deletesAfter>\n        <isIPV4Capable>string</isIPV4Capable>\n        <isIPV6Capable>string</isIPV6Capable>\n        <isIDProtectCapable>string</isIDProtectCapable>\n        <transferLock>string</transferLock>\n        <isHostsCapable>string</isHostsCapable>\n        <minYears>string</minYears>\n        <maxYears>string</maxYears>\n        <canRenew>string</canRenew>\n        <canRestore>string</canRestore>\n        <DNSSECAvailable>true</DNSSECAvailable>\n        <availableContactsResponse>\n          <@_SOAP-ENC:arrayType/>\n        </availableContactsResponse>\n        <whoisVerification>true</whoisVerification>\n        <passwordRequirementsResponse>\n          <minimumLength>100</minimumLength>\n          <maximumLength>100</maximumLength>\n          <complexity>string</complexity>\n        </passwordRequirementsResponse>\n      </getDomainExtensionOptionsResponse>\n    </getDomainExtensionOptionsResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "getDomainPricing response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <getDomainPricingResponse>\n      <getDomainPricingResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <arrayPricingResponse>\n          <@_SOAP-ENC:arrayType/>\n        </arrayPricingResponse>\n      </getDomainPricingResponse>\n    </getDomainPricingResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "getSSLPricing response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <getSSLPricingResponse>\n      <getSSLPricingResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <arraySSLPricingResponse>\n          <@_SOAP-ENC:arrayType/>\n        </arraySSLPricingResponse>\n      </getSSLPricingResponse>\n    </getSSLPricingResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "getSimpleURLForwards response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <getSimpleURLForwardsResponse>\n      <getSimpleURLForwardsResponse>\n        <getSimpleURLForwardsArray>\n          <@_SOAP-ENC:arrayType/>\n        </getSimpleURLForwardsArray>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </getSimpleURLForwardsResponse>\n    </getSimpleURLForwardsResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "getTransferredAwayDomains response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <getTransferredAwayDomainsResponse>\n      <getTransferredAwayDomainsResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <arrayDomainTransferOutboundResponse>\n          <@_SOAP-ENC:arrayType/>\n        </arrayDomainTransferOutboundResponse>\n      </getTransferredAwayDomainsResponse>\n    </getTransferredAwayDomainsResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "getUSNexusData response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <getUSNexusDataResponse>\n      <getUSNexusDataResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <nexusCategory>string</nexusCategory>\n        <nexusApplication>string</nexusApplication>\n      </getUSNexusDataResponse>\n    </getUSNexusDataResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "getWHMCSModulesVersions response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <getWHMCSModulesVersionsResponse>\n      <getWHMCSModulesVersionsResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <arrayWHMCSModulesVersions>\n          <@_SOAP-ENC:arrayType/>\n        </arrayWHMCSModulesVersions>\n      </getWHMCSModulesVersionsResponse>\n    </getWHMCSModulesVersionsResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "hostingChangePackage response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <hostingChangePackageResponse>\n      <hostingChangePackageResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <newAmount>string</newAmount>\n      </hostingChangePackageResponse>\n    </hostingChangePackageResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "hostingChangePassword response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <hostingChangePasswordResponse>\n      <hostingChangePasswordResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <password>string</password>\n      </hostingChangePasswordResponse>\n    </hostingChangePasswordResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "hostingCheckFirewall response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <hostingCheckFirewallResponse>\n      <hostingCheckFirewallResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <blocked>true</blocked>\n      </hostingCheckFirewallResponse>\n    </hostingCheckFirewallResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "hostingDisableTempUrl response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <hostingDisableTempUrlResponse>\n      <hostingTerminateServiceResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </hostingTerminateServiceResponse>\n    </hostingDisableTempUrlResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "hostingEnableTempUrl response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <hostingEnableTempUrlResponse>\n      <hostingEnableTempUrlResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <tempUrl>string</tempUrl>\n      </hostingEnableTempUrlResponse>\n    </hostingEnableTempUrlResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "hostingGetLogin response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <hostingGetLoginResponse>\n      <hostingGetLoginResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <url>string</url>\n      </hostingGetLoginResponse>\n    </hostingGetLoginResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "hostingGetService response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <hostingGetServiceResponse>\n      <hostingGetServiceResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <domain>string</domain>\n        <username>string</username>\n        <server>string</server>\n        <plan>string</plan>\n        <planID>string</planID>\n        <product>string</product>\n        <locationID>string</locationID>\n        <billingPeriod>string</billingPeriod>\n        <nextRenewalDue>string</nextRenewalDue>\n        <city>string</city>\n        <country>string</country>\n        <dedicatedIPv4>string</dedicatedIPv4>\n        <password>string</password>\n        <diskUsage>string</diskUsage>\n        <bandwidth>14</bandwidth>\n        <tempUrl>true</tempUrl>\n        <tempUrlDate>string</tempUrlDate>\n        <serverIPAddress>string</serverIPAddress>\n        <nameServerResponse>\n          <@_SOAP-ENC:arrayType/>\n        </nameServerResponse>\n        <diskLimit>string</diskLimit>\n        <mxrecords>string</mxrecords>\n        <bandwidthLimit>string</bandwidthLimit>\n        <dkim>string</dkim>\n        <activeSync>string</activeSync>\n        <mailboxUsage>string</mailboxUsage>\n        <firstName>string</firstName>\n        <lastName>string</lastName>\n        <createdDate>string</createdDate>\n      </hostingGetServiceResponse>\n    </hostingGetServiceResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "hostingListPackages response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <hostingListPackagesResponse>\n      <hostingListPackagesResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <packageListArray>\n          <@_SOAP-ENC:arrayType/>\n        </packageListArray>\n      </hostingListPackagesResponse>\n    </hostingListPackagesResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "hostingPurchaseService response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <hostingPurchaseServiceResponse>\n      <hostingPurchaseServiceResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <username>string</username>\n        <domain>string</domain>\n        <password>string</password>\n        <hoid>string</hoid>\n      </hostingPurchaseServiceResponse>\n    </hostingPurchaseServiceResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "hostingRecreateService response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <hostingRecreateServiceResponse>\n      <hostingRecreateServiceResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <password>string</password>\n      </hostingRecreateServiceResponse>\n    </hostingRecreateServiceResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "hostingSuspendService response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <hostingSuspendServiceResponse>\n      <hostingSuspendServiceResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </hostingSuspendServiceResponse>\n    </hostingSuspendServiceResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "hostingTerminateService response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <hostingTerminateServiceResponse>\n      <hostingTerminateServiceResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </hostingTerminateServiceResponse>\n    </hostingTerminateServiceResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "hostingUnblockFirewall response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <hostingUnblockFirewallResponse>\n      <hostingCheckFirewallResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <blocked>true</blocked>\n      </hostingCheckFirewallResponse>\n    </hostingUnblockFirewallResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "hostingUnsuspendService response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <hostingUnsuspendServiceResponse>\n      <hostingUnsuspendServiceResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </hostingUnsuspendServiceResponse>\n    </hostingUnsuspendServiceResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "initiateAUCOR response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <initiateAUCORResponse>\n      <initiateAUCORResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <costPrice>71</costPrice>\n      </initiateAUCORResponse>\n    </initiateAUCORResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "isDomainTransferrable response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <isDomainTransferrableResponse>\n      <isDomainTransferrableResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <internalTransfer>true</internalTransfer>\n        <expiry>string</expiry>\n      </isDomainTransferrableResponse>\n    </isDomainTransferrableResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "listAllHosts response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <listAllHostsResponse>\n      <listAllHostsResponse>\n        <statusCode>100</statusCode>\n        <reason>string</reason>\n        <arrayHostResponse>\n          <@_SOAP-ENC:arrayType/>\n        </arrayHostResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </listAllHostsResponse>\n    </listAllHostsResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "listAvailableDomainExtensions response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <listAvailableDomainExtensionsResponse>\n      <listAvailableDomainExtensionsResponse>\n        <reason>string</reason>\n        <listAvailableDomainExtensionsResponseArray>\n          <@_SOAP-ENC:arrayType/>\n        </listAvailableDomainExtensionsResponseArray>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </listAvailableDomainExtensionsResponse>\n    </listAvailableDomainExtensionsResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "listContacts response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <listContactsResponse>\n      <listContactsResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <listContactsResponseArray/>\n      </listContactsResponse>\n    </listContactsResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "listDNSZone response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <listDNSZoneResponse>\n      <listDNSZoneResponse>\n        <statusCode>string</statusCode>\n        <reason>string</reason>\n        <listDNSZoneArray>\n          <@_SOAP-ENC:arrayType/>\n        </listDNSZoneArray>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </listDNSZoneResponse>\n    </listDNSZoneResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "listDomainCategories response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <listDomainCategoriesResponse>\n      <listDomainCategoriesResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <domainCategoriesArray>\n          <@_SOAP-ENC:arrayType/>\n        </domainCategoriesArray>\n      </listDomainCategoriesResponse>\n    </listDomainCategoriesResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "listDomains response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <listDomainsResponse>\n      <bulkDomainInfoResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <bulkDomainInfoResponseArray>\n          <@_SOAP-ENC:arrayType/>\n        </bulkDomainInfoResponseArray>\n        <page>100</page>\n        <limit>100</limit>\n      </bulkDomainInfoResponse>\n    </listDomainsResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "listEmailToSMSForwarders response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <listEmailToSMSForwardersResponse>\n      <listEmailToSMSForwardersResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <arrayEmailToSMSForwardersResponse>\n          <@_SOAP-ENC:arrayType/>\n        </arrayEmailToSMSForwardersResponse>\n      </listEmailToSMSForwardersResponse>\n    </listEmailToSMSForwardersResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "listHost response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <listHostResponse>\n      <listHostResponse>\n        <statusCode>100</statusCode>\n        <reason>string</reason>\n        <host>string</host>\n        <domainName>string</domainName>\n        <ipAddressResponse/>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </listHostResponse>\n    </listHostResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "listHosting response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <listHostingResponse>\n      <bulkHostingInfoResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <page>100</page>\n        <limit>100</limit>\n        <bulkHostingInfoResponseArray>\n          <@_SOAP-ENC:arrayType/>\n        </bulkHostingInfoResponseArray>\n      </bulkHostingInfoResponse>\n    </listHostingResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "listMailForwards response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <listMailForwardsResponse>\n      <listMailForwardsResponse>\n        <listMailForwardsArray>\n          <@_SOAP-ENC:arrayType/>\n        </listMailForwardsArray>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </listMailForwardsResponse>\n    </listMailForwardsResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "listProtectedContacts response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <listProtectedContactsResponse>\n      <listContactsResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <listContactsResponseArray/>\n      </listContactsResponse>\n    </listProtectedContactsResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "lockDomain response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <lockDomainResponse>\n      <lockDomainResponse>\n        <statusCode>100</statusCode>\n        <reason>string</reason>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </lockDomainResponse>\n    </lockDomainResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "maxYearsCanRenewFor response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <maxYearsCanRenewForResponse>\n      <maxYearsCanRenewForResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <maxYears>100</maxYears>\n      </maxYearsCanRenewForResponse>\n    </maxYearsCanRenewForResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "rawDomainContacts response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <rawDomainContactsResponse>\n      <rawDomainContactsResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <registrant/>\n        <admin/>\n        <tech/>\n        <billing/>\n      </rawDomainContactsResponse>\n    </rawDomainContactsResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "removeDomainCategory response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <removeDomainCategoryResponse>\n      <removeDomainCategoryResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <domainCategorySingleEntry>\n          <id>string</id>\n          <name>string</name>\n          <note>string</note>\n          <createdDate>2025-03-19T07:20:19.937Z</createdDate>\n        </domainCategorySingleEntry>\n      </removeDomainCategoryResponse>\n    </removeDomainCategoryResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "renewDomain response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <renewDomainResponse>\n      <renewDomainResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <costPrice>36</costPrice>\n      </renewDomainResponse>\n    </renewDomainResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "resendChangeOfRegistrantEmails response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <resendChangeOfRegistrantEmailsResponse>\n      <resendChangeOfRegistrantEmailsResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </resendChangeOfRegistrantEmailsResponse>\n    </resendChangeOfRegistrantEmailsResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "resendRegistrantUpdateEmails response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <resendRegistrantUpdateEmailsResponse>\n      <resendRegistrantUpdateEmailsResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </resendRegistrantUpdateEmailsResponse>\n    </resendRegistrantUpdateEmailsResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "resendTransferEmail response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <resendTransferEmailResponse>\n      <resendTransferEmailResponse>\n        <statusCode>100</statusCode>\n        <reason>string</reason>\n        <newEmail>string</newEmail>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </resendTransferEmailResponse>\n    </resendTransferEmailResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "resendVerificationEmail response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <resendVerificationEmailResponse>\n      <resendVerificationEmailResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </resendVerificationEmailResponse>\n    </resendVerificationEmailResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "restoreDomain response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <restoreDomainResponse>\n      <restoreDomainResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <costPrice>16</costPrice>\n      </restoreDomainResponse>\n    </restoreDomainResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "resubmitFailedTransfer response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <resubmitFailedTransferResponse>\n      <resubmitFailedTransferResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <costPrice>74</costPrice>\n      </resubmitFailedTransferResponse>\n    </resubmitFailedTransferResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "sendSMS response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <sendSMSResponse>\n      <sendSMSResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <msgCount>100</msgCount>\n        <perMsgCost>string</perMsgCost>\n        <totalMsgCost>string</totalMsgCost>\n      </sendSMSResponse>\n    </sendSMSResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "subscriptionCreateClient response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <subscriptionCreateClientResponse>\n      <createClientResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <identifier>string</identifier>\n        <domainPrefix>string</domainPrefix>\n      </createClientResponse>\n    </subscriptionCreateClientResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "subscriptionGetClient response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <subscriptionGetClientResponse>\n      <getClientResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <firstname>string</firstname>\n        <lastname>string</lastname>\n        <company>string</company>\n        <email>string</email>\n        <phone>string</phone>\n        <address>string</address>\n        <address2>string</address2>\n        <suburb>string</suburb>\n        <postcode>string</postcode>\n        <state>string</state>\n        <country>string</country>\n        <domainPrefix>string</domainPrefix>\n        <clientStatus>string</clientStatus>\n        <description>string</description>\n      </getClientResponse>\n    </subscriptionGetClientResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "subscriptionGetDetails response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <subscriptionGetDetailsResponse>\n      <getSubscriptionForClientResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <productId>string</productId>\n        <productName>string</productName>\n        <quantity>string</quantity>\n        <monthlyCost>3</monthlyCost>\n        <getSubscriptionAddonsArray>\n          <@_SOAP-ENC:arrayType/>\n        </getSubscriptionAddonsArray>\n        <getSubscriptionTasksArray>\n          <@_SOAP-ENC:arrayType/>\n        </getSubscriptionTasksArray>\n        <subscriptionStatus>string</subscriptionStatus>\n      </getSubscriptionForClientResponse>\n    </subscriptionGetDetailsResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "subscriptionListClientSubscriptions response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <subscriptionListClientSubscriptionsResponse>\n      <getSubscriptionsForClientResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <subscriptionListArray>\n          <@_SOAP-ENC:arrayType/>\n        </subscriptionListArray>\n      </getSubscriptionsForClientResponse>\n    </subscriptionListClientSubscriptionsResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "subscriptionListClients response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <subscriptionListClientsResponse>\n      <listClientsResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <clientListArray>\n          <@_SOAP-ENC:arrayType/>\n        </clientListArray>\n      </listClientsResponse>\n    </subscriptionListClientsResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "subscriptionListPurchasable response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <subscriptionListPurchasableResponse>\n      <getSubscriptionsForClientsResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <subscriptionProductListArray>\n          <@_SOAP-ENC:arrayType/>\n        </subscriptionProductListArray>\n      </getSubscriptionsForClientsResponse>\n    </subscriptionListPurchasableResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "subscriptionPurchase response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <subscriptionPurchaseResponse>\n      <purchaseSubscriptionResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <subscriptionListArray>\n          <@_SOAP-ENC:arrayType/>\n        </subscriptionListArray>\n      </purchaseSubscriptionResponse>\n    </subscriptionPurchaseResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "subscriptionSuspend response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <subscriptionSuspendResponse>\n      <suspendSubscriptionResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </suspendSubscriptionResponse>\n    </subscriptionSuspendResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "subscriptionTerminate response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <subscriptionTerminateResponse>\n      <terminateSubscriptionResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </terminateSubscriptionResponse>\n    </subscriptionTerminateResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "subscriptionUnsuspend response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <subscriptionUnsuspendResponse>\n      <unsuspendSubscriptionResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </unsuspendSubscriptionResponse>\n    </subscriptionUnsuspendResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "subscriptionUpdateClient response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <subscriptionUpdateClientResponse>\n      <updateClientResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </updateClientResponse>\n    </subscriptionUpdateClientResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "subscriptionUpdateQuantity response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <subscriptionUpdateQuantityResponse>\n      <updateSubscriptionQuantityResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <newMonthlyCost>string</newMonthlyCost>\n        <cost>string</cost>\n      </updateSubscriptionQuantityResponse>\n    </subscriptionUpdateQuantityResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "transferCancel response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <transferCancelResponse>\n      <transferCancelResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <refundAmount>79</refundAmount>\n      </transferCancelResponse>\n    </transferCancelResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "transferDomain response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <transferDomainResponse>\n      <transferDomainResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <costPrice>95</costPrice>\n      </transferDomainResponse>\n    </transferDomainResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "transferOutboundApprove response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <transferOutboundApproveResponse>\n      <transferOutboundApproveResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </transferOutboundApproveResponse>\n    </transferOutboundApproveResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "transferReject response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <transferRejectResponse>\n      <transferRejectResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </transferRejectResponse>\n    </transferRejectResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "unassignDomainCategory response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <unassignDomainCategoryResponse>\n      <unassignDomainCategoryResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </unassignDomainCategoryResponse>\n    </unassignDomainCategoryResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "unlockDomain response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <unlockDomainResponse>\n      <unlockDomainResponse>\n        <statusCode>100</statusCode>\n        <reason>string</reason>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </unlockDomainResponse>\n    </unlockDomainResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "updateContact response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <updateContactResponse>\n      <updateContactResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </updateContactResponse>\n    </updateContactResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "updateDNSRecord response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <updateDNSRecordResponse>\n      <addDNSRecordResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <id>string</id>\n        <domainName>string</domainName>\n        <recordName>string</recordName>\n        <recordType>string</recordType>\n        <recordContent>string</recordContent>\n        <recordTTL>100</recordTTL>\n        <recordPrio>100</recordPrio>\n      </addDNSRecordResponse>\n    </updateDNSRecordResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "updateDomainCategory response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <updateDomainCategoryResponse>\n      <updateDomainCategoryResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n        <domainCategorySingleEntry>\n          <id>string</id>\n          <name>string</name>\n          <note>string</note>\n          <createdDate>2025-03-19T07:20:19.937Z</createdDate>\n        </domainCategorySingleEntry>\n      </updateDomainCategoryResponse>\n    </updateDomainCategoryResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "updateDomainPassword response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <updateDomainPasswordResponse>\n      <updateDomainPasswordResponse>\n        <statusCode>100</statusCode>\n        <reason>string</reason>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </updateDomainPasswordResponse>\n    </updateDomainPasswordResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "updateNameServers response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <updateNameServersResponse>\n      <updateNameServersResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </updateNameServersResponse>\n    </updateNameServersResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+                  },
+                  "updateXXXMembershipDetails response": {
+                    "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <updateXXXMembershipDetailsResponse>\n      <updateXXXMembershipDetailsResponse>\n        <status>string</status>\n        <errorMessage>string</errorMessage>\n      </updateXXXMembershipDetailsResponse>\n    </updateXXXMembershipDetailsResponse>\n  </soap:Body>\n</soap:Envelope>\n"
                   }
                 }
               }
             }
-          },
-          "400": {
-            "description": "Unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "description": "Creates a new plant in the store",
-        "requestBody": {
-          "description": "Plant to add to the store",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewPlant"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "plant response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Plant"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/plants/{id}": {
-      "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of plant to delete",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Plant deleted",
-            "content": {}
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
           }
         }
       }
     }
   },
-  "webhooks": {
-    "/plant/webhook": {
-      "post": {
-        "description": "Information about a new plant added to the store",
-        "requestBody": {
-          "description": "Plant added to the store",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewPlant"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Return a 200 status to indicate that the data was received successfully"
-          }
-        }
-      }
-    }
-  },
-  "components": {
-    "schemas": {
-      "Plant": {
-        "required": [
-          "name"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "description": "The name of the plant",
-            "type": "string"
-          },
-          "tag": {
-            "description": "Tag to specify the type",
-            "type": "string"
-          }
-        }
-      },
-      "NewPlant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Plant"
-          },
-          {
-            "required": [
-              "id"
-            ],
-            "type": "object",
-            "properties": {
-              "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ]
-      },
-      "Error": {
-        "required": [
-          "error",
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "error": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "message": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
-      }
-    }
-  }
+  "tags": []
 }
