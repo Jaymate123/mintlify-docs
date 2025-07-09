@@ -1,0 +1,45 @@
+---
+title: "balanceQuery"
+description: "Will check to see what the resellers balance is."
+---
+
+<table title="Parameters">
+| Parameter       | Type | Description                                           |
+| --------------- | ---- | ----------------------------------------------------- |
+| _No parameters_ | N/A  | This operation does not require any input parameters. |
+
+</table>
+
+<RequestExample>
+
+```xml
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tns="urn:WholesaleSystem">
+  <SOAP-ENV:Body>
+    <tns:balanceQuery/>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```xml
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tns="urn:WholesaleSystem">
+  <SOAP-ENV:Body>
+    <tns:balanceQueryResponse>
+      <!-- Example response content with reseller balance -->
+      <balance>1000.00</balance>
+      <currency>USD</currency>
+    </tns:balanceQueryResponse>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+```
+
+</ResponseExample>
+
+<Note>
+  - This operation does not require any input parameters.
+  - The response will contain the reseller's current balance and currency.
+  - Ensure your SOAP client is configured to use the `urn:WholesaleSystem` namespace.
+</Note>
