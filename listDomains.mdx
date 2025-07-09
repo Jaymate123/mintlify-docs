@@ -1,0 +1,58 @@
+---
+title: "listDomains"
+description: "Will get the details of a list of provided domains if it exists."
+---
+
+
+<Table title="Parameters">
+| Parameter | Type | Description |
+| --------- | ---- | ----------- |
+| (none)    | N/A  | This operation does not define explicit parameters in the WSDL. The input message `tns:listDomains` is expected to contain the list of domains to query. |
+</Table>
+
+<RequestExample language="xml" title="SOAP Request Example">
+```xml
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tns="urn:WholesaleSystem">
+  <SOAP-ENV:Header/>
+  <SOAP-ENV:Body>
+    <tns:listDomains>
+      <!-- Include domain list elements here as per service schema -->
+      <!-- Example: -->
+      <domain>example.com</domain>
+      <domain>example.net</domain>
+    </tns:listDomains>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+```
+</RequestExample>
+
+<ResponseExample language="xml" title="SOAP Response Example">
+```xml
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tns="urn:WholesaleSystem">
+  <SOAP-ENV:Header/>
+  <SOAP-ENV:Body>
+    <tns:listDomainsResponse>
+      <!-- Response details for each domain -->
+      <domainDetails>
+        <domain>example.com</domain>
+        <status>active</status>
+        <expiryDate>2025-12-31</expiryDate>
+      </domainDetails>
+      <domainDetails>
+        <domain>example.net</domain>
+        <status>inactive</status>
+        <expiryDate>2023-06-30</expiryDate>
+      </domainDetails>
+    </tns:listDomainsResponse>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+```
+</ResponseExample>
+
+<Info>
+- The exact structure of the input message `listDomains` and output message `listDomainsResponse` is not defined in the provided WSDL snippet.
+- Typically, the input will include a list of domain names to query.
+- The response will include details for each domain if it exists.
+- Adjust the request and response XML according to the full schema definitions provided by the service.
+</Info>
+```
